@@ -6,7 +6,7 @@
 #    By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/16 21:54:50 by snaomi            #+#    #+#              #
-#    Updated: 2020/07/25 07:54:17 by snaomi           ###   ########.fr        #
+#    Updated: 2020/07/28 13:29:46 by snaomi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC =	ft_printf.c\
 		ft_printf_printing_int.c
 
 OBJ = $(SRC:.c=.o)
-HEADER = ./include/
+HEADER = printf.h
 FLAGS = -Wall -Wextra -Werror
 LIBFTDIR = ./libft
 
@@ -32,10 +32,6 @@ $(NAME): $(OBJ)
 	cp ./libft/libft.a $(NAME)
 	ar -rcsv $@ $^
 
-so:
-	gcc -fPIC -c $(SRC) $(FLAGS)
-	gcc $(OBJ) -shared -o libftprintf.so
-
 clean:
 	make clean -C libft
 	rm -f $(OBJ)
@@ -43,3 +39,5 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f libftprintf.so
+
+re: fclean all

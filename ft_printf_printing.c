@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 06:53:41 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 08:30:08 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/28 13:34:37 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_print_str(char* temp, t_struct *tmp)
 {
 	int		len;
 
-	if (!temp && !(temp = ft_strdup("(null)")))
+	if (!temp)
 		return (-1);
 	if (tmp->precision_null && !tmp->width)
 		return (0);
@@ -55,20 +55,11 @@ int		ft_print_str(char* temp, t_struct *tmp)
 
 int		ft_print_char(char c, t_struct *tmp)
 {
-	char	*new;
 	int		len;
 
 	len = 1;
-	// if (tmp->precision_null && !tmp->width)
-	// 	return (0);
-	// len = (tmp->precision_null) ? 0 : len;
-	// len = (tmp->precision && tmp->precision <= len) ? tmp->precision : len;
-	// if (!c)
-	// 	return (-1);
 	if (tmp->flag_minus)
 	{
-		// while (tmp->precision-- > 0)
-		// 	tmp->res += write(1, "0" , 1);
 		tmp->res += write(1, &c, 1);
 		while (tmp->width > tmp->res)
 		{
@@ -147,13 +138,6 @@ int		ft_print_u(unsigned int i, t_struct *tmp)
 	return (tmp->res);
 }
 
-/*Hexadecimal value has 16 alphanumeric values from 0 to 9 and A to F, with the base 16
-**"%x" prints the value in Hexadecimal format with alphabets in lowercase (a-f).
-**"%X" prints the value in Hexadecimal format with alphabets in uppercase (A-F).
-**There is no special type of data type to store Hexadecimal values in C programming, Hexadecimal number is an integer value and you can store it in the integral type of data types (char, short or int).
-**Let suppose, we have two values in Hexadecimal "64" (100 in Decimal) and "FAFA" (64250 in Decimal).
-**We are storing "64" in an unsigned char variable (64 is small value and can be stored with in a Byte) and "FAFA" in the int variable.
-*/
 int		ft_print_hex(unsigned int i, t_struct *tmp)
 {
 	char	*temp;
