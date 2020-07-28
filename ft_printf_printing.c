@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 06:53:41 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 08:08:30 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/28 08:30:08 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ int		ft_print_ptr(unsigned int i, t_struct *tmp)
 		while ((tmp->precision - tmp->res) > 0)
 			tmp->res += write(1, "0", 1);
 		tmp->res += write(1, temp, len);
-		while ((tmp->width - tmp->res) > (len + tmp->precision))
+		while ((tmp->width - tmp->res) > 0)
 			tmp->res += write(1, " ", 1);
 	}
 	else 
