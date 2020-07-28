@@ -1,23 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/04 06:40:13 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/24 21:59:05 by snaomi           ###   ########.fr       */
+/*   Created: 2020/07/25 08:16:39 by snaomi            #+#    #+#             */
+/*   Updated: 2020/07/25 09:09:45 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *c)
+static	int		count(unsigned int c)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (c[i] != '\0')
+	if (c == 0)
 		i++;
+	while (c)
+	{
+		c = c / 10;
+		i++;
+	}
 	return (i);
+}
+
+char			*ft_utoa(unsigned int n)
+{
+	char	*res;
+	int		len;
+	int		buf;
+
+	len = count(n);
+	if (!(res = malloc(sizeof(*res) * (len + 1))))
+		return (NULL);
+	res[len] = '\0';
+	if (n == 0)
+		res[0] = '0';
+	while (n)
+	{
+		buf = n % 10;
+		res[--len] = buf + '0';
+		n /= 10;
+	}
+	return (res);
 }

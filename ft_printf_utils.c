@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 14:35:40 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/23 21:09:35 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/27 02:48:58 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,65 @@ t_struct		*ft_lstnew_printf(t_struct *tmp)
 	tmp->flag_minus = 0;
 	tmp->flag_zero = 0;
 	tmp->precision = 0;
-	tmp->precision_num = 0;
+	tmp->precision_null = 0;
 	tmp->type = '\0';
 	tmp->res = 0;
 	return (tmp);
+}
+
+int		write_int(char *temp, int len, t_struct *tmp)
+{
+	while(len > 0)
+	{
+		tmp->res += write(1, temp, 1);
+		temp++;
+		len--;
+	}
+	return (tmp->res);
+}
+
+int		ft_print_minus(char *temp, int len, t_struct *tmp)
+{
+	// (tmp->precision >= 0) ? tmp->precision++ : tmp->precision;
+	if (tmp->flag_minus)
+	{	
+		tmp->res += write(1, temp++, 1);
+		print_zero(	tmp, tmp->precision);
+		write_int(temp, len - 1, tmp);
+		print_blank(tmp, tmp->width -(len + tmp->precision));
+	}
+	else if (tmp->flag_zero)
+	{
+		tmp->res += write(1, temp++, 1);
+		print_zero(tmp, tmp->width - (len + tmp->precision));
+		write_int(temp, len - 1, tmp);
+	}
+	else
+	{
+		print_blank(tmp, tmp->width -(len + tmp->precision));
+		tmp->res += write(1, temp++, 1);
+		print_zero(tmp, tmp->precision);
+		write_int(temp, len - 1, tmp);
+	}
+	return (tmp->res);
+}
+
+int		print_zero(t_struct *tmp, int temp)
+{
+	while (temp > 0)
+	{
+		tmp->res += write(1, "0", 1);
+		temp--;
+	}
+	return(tmp->res);
+}
+
+int 	print_blank(t_struct *tmp, int temp)
+{
+	while (temp > 0)
+	{
+		tmp->res += write(1, " ", 1);
+		temp--;
+	}
+	return (tmp->res);
 }

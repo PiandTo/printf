@@ -6,7 +6,7 @@
 #    By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/08 09:05:19 by snaomi            #+#    #+#              #
-#    Updated: 2020/07/23 09:22:37 by snaomi           ###   ########.fr        #
+#    Updated: 2020/07/25 08:19:01 by snaomi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC =	ft_memset.c\
 		ft_split.c\
 		ft_xtoa.c\
 		ft_itoa.c\
+		ft_utoa.c\
 		ft_strmapi.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\

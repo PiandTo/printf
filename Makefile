@@ -6,7 +6,7 @@
 #    By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/16 21:54:50 by snaomi            #+#    #+#              #
-#    Updated: 2020/07/21 08:00:18 by snaomi           ###   ########.fr        #
+#    Updated: 2020/07/25 07:54:17 by snaomi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 SRC =	ft_printf.c\
 		ft_printf_utils.c\
-		ft_printf_printing.c
+		ft_printf_printing.c\
+		ft_printf_printing_int.c
 
 OBJ = $(SRC:.c=.o)
 HEADER = ./include/
