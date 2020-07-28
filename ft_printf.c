@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 21:56:20 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 15:24:53 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/28 21:09:02 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static const char		*parser(const char *s, t_struct *tmp, va_list ap)
 			tmp->flag_minus = 1;
 		else if (*s == '0' && !tmp->flag_minus && !tmp->precision_null)
 			tmp->flag_zero = 1;
-		else if (*s == '*' || ('0' <= *s && *s <= '9'))
+		else if (!tmp->precision && (*s == '*' || ('0' <= *s && *s <= '9')))
 		{
 			if (*s == '*')
 				(tmp->width = va_arg(ap, int));
@@ -37,9 +37,10 @@ static const char		*parser(const char *s, t_struct *tmp, va_list ap)
 		}
 		else if (*s == '.')
 		{
-			if (*(++s) == '*' || ('0' < *s && *s <= '9'))
+			if (*(++s) == '*' || ('0' <= *s && *s <= '9'))
 			{
-				('0' < *s && *s <= '9') ? (tmp->precision = ft_atoi(s)) : (tmp->precision = va_arg(ap, int));
+				(*s == '0' && *(s + 1) == '*') ? s++ : s;
+				('0' <= *s && *s <= '9') ? (tmp->precision = ft_atoi(s)) : (tmp->precision = va_arg(ap, int));
 				tmp->precision == 0 ? tmp->precision_null = 1 : tmp->precision;
 			}
 			else if (*s == '0')

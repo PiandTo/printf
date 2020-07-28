@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 14:35:40 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/27 02:48:58 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/28 23:09:13 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		write_int(char *temp, int len, t_struct *tmp)
 
 int		ft_print_minus(char *temp, int len, t_struct *tmp)
 {
-	// (tmp->precision >= 0) ? tmp->precision++ : tmp->precision;
 	if (tmp->flag_minus)
 	{	
 		tmp->res += write(1, temp++, 1);
@@ -64,20 +63,26 @@ int		ft_print_minus(char *temp, int len, t_struct *tmp)
 
 int		print_zero(t_struct *tmp, int temp)
 {
-	while (temp > 0)
+	int i;
+
+	i = 0;
+	while (i < temp)
 	{
 		tmp->res += write(1, "0", 1);
-		temp--;
+		i++;
 	}
 	return(tmp->res);
 }
 
 int 	print_blank(t_struct *tmp, int temp)
 {
-	while (temp > 0)
+	int i;
+
+	i = 0;
+	while (i < temp)
 	{
 		tmp->res += write(1, " ", 1);
-		temp--;
+		i++;
 	}
 	return (tmp->res);
 }

@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 07:52:16 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/27 21:29:08 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/28 23:24:41 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,28 @@ int		ft_print_int(int i, t_struct *tmp)
 	}
 	free(ptr);
 	return (tmp->res);	
+}
+
+int			check_len(t_struct *tmp, char *temp)
+{
+	int	len;
+
+	len = 0;
+	len = (*temp == '0' && tmp->precision_null) ?  0 : ft_strlen(temp);
+	(tmp->flag_minus || tmp->precision || tmp->precision_null) ? tmp->flag_zero = 0 : tmp->flag_zero;
+	(tmp->precision >= len) ? (tmp->precision -= len) : (tmp->precision = 0);
+	return (len);
+}
+
+char		*ft_toupper_register(t_struct *tmp, char *temp){
+	int len;
+	
+	len = 0;
+	while (temp[len] != '\0')
+	{
+		if (tmp->type == 'X')
+			temp[len] = ft_toupper(temp[len]);
+		len++;
+	}
+	return(temp);
 }
