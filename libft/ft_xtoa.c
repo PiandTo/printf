@@ -6,17 +6,17 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 09:11:50 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 23:52:26 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 02:51:20 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_xtoa(unsigned int n, char *base)
+char			*ft_xtoa(unsigned long long n, char *base)
 {
-	char			*res;
-	int				len;
-    unsigned int    buf;
+	char					*res;
+	int						len;
+    unsigned long long	    buf;
 
     buf = n;
 	len = 1;

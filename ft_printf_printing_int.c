@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 07:52:16 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 23:24:41 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 01:11:26 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int			check_len(t_struct *tmp, char *temp)
 	return (len);
 }
 
-char		*ft_toupper_register(t_struct *tmp, char *temp){
+char		*ft_toupper_register(t_struct *tmp, char *temp)
+{
 	int len;
 	
 	len = 0;

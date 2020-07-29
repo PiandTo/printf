@@ -6,17 +6,17 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 21:55:24 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 23:21:58 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 03:01:54 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include "libft/libft.h"
+# include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include "./libft/libft.h"
 
 typedef struct		s_struct
 {
@@ -34,7 +34,7 @@ t_struct			*ft_lstnew_printf(t_struct *tmp);
 int					ft_print_str(char *temp, t_struct *tmp);
 int					ft_print_char(char s, t_struct *tmp);
 int					ft_print_int(int i, t_struct *tmp);
-int					ft_print_ptr(unsigned int i, t_struct *tmp);
+int					ft_print_ptr(unsigned long long i, t_struct *tmp);
 int					ft_print_hex(unsigned int i, t_struct *tmp);
 int					ft_print_u(unsigned int i, t_struct *tmp);
 t_struct			free_struct(t_struct *container);

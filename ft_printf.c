@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 21:56:20 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 21:09:02 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 03:04:00 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int				processor(va_list ap, t_struct *tmp)
 	else if (tmp->type == 'c')
 		ft_print_char(va_arg(ap, int), tmp);
 	else if (tmp->type == 'p')
-		ft_print_ptr(va_arg(ap, unsigned int), tmp);
+		ft_print_ptr(va_arg(ap, unsigned long long), tmp);
 	else if (tmp->type == 'u')
 		ft_print_u(va_arg(ap, unsigned int), tmp);
 	else if (tmp->type == 'x' || tmp->type == 'X')

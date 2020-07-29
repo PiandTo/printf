@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 06:53:41 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 23:25:58 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 11:42:59 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int		ft_print_str(char* temp, t_struct *tmp)
 {
 	int		len;
-	// char	*buf;
 
 	if (!temp && !(temp = ft_strdup("(null)")))
 		return (-1);
-	// buf = temp;
 	len = (tmp->precision_null) ? 0 : ft_strlen(temp);
 	len = (tmp->precision && tmp->precision <= len) ? tmp->precision : len;
 	if (tmp->flag_minus)
@@ -37,7 +35,6 @@ int		ft_print_str(char* temp, t_struct *tmp)
 		print_blank(tmp, tmp->width - (tmp->res + len));
 		tmp->res += write(1, temp, len);
 	}
-	// free (temp);
 	return (tmp->res);
 }
 
@@ -123,7 +120,7 @@ int		ft_print_hex(unsigned int i, t_struct *tmp)
 	return (tmp->res);
 }
 
-int		ft_print_ptr(unsigned int i, t_struct *tmp)
+int		ft_print_ptr(unsigned long long i, t_struct *tmp)
 {
 	int		len;
 	char 	*buf;
@@ -138,19 +135,15 @@ int		ft_print_ptr(unsigned int i, t_struct *tmp)
 	if (tmp->flag_minus)
 	{
 		tmp->res += write(1, "0x", 2);
-		while ((tmp->precision - tmp->res) > 0)
-			tmp->res += write(1, "0", 1);
+		print_zero(tmp, tmp->precision - tmp->res);
 		tmp->res += write(1, temp, len);
-		while ((tmp->width - tmp->res) > 0)
-			tmp->res += write(1, " ", 1);
+		print_blank(tmp, tmp->width - tmp->res);
 	}
 	else 
 	{
-		while ((tmp->width - tmp->res) > (len + 2 + tmp->precision))
-			tmp->res += write(1, " ", 1);	
+		print_blank(tmp, (tmp->width - tmp->res - len - 2 - tmp->precision));
 		tmp->res += write(1, "0x", 2);
-		while ((tmp->precision - tmp->res) > 0)
-			tmp->res += write(1, "0", 1);
+		print_zero(tmp, tmp->precision - tmp->res);
 		tmp->res += write(1, temp, len);
 	}
 	free (buf);
