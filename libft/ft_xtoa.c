@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 09:11:50 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/29 02:51:20 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 16:21:36 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ char			*ft_xtoa(unsigned long long n, char *base)
 {
 	char					*res;
 	int						len;
-    unsigned long long	    buf;
+	unsigned long long		buf;
 
-    buf = n;
+	buf = n;
 	len = 1;
 	while (buf >= 16)
 	{
-        len++;
+		len++;
 		buf /= 16;
 	}
 	if (!(res = malloc(sizeof(*res) * (len + 1))))

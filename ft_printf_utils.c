@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 14:35:40 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/28 23:09:13 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 16:06:44 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_struct		*ft_lstnew_printf(t_struct *tmp)
 {
-
 	tmp->width = 0;
 	tmp->flag_minus = 0;
 	tmp->flag_zero = 0;
@@ -25,9 +24,9 @@ t_struct		*ft_lstnew_printf(t_struct *tmp)
 	return (tmp);
 }
 
-int		write_int(char *temp, int len, t_struct *tmp)
+int				write_int(char *temp, int len, t_struct *tmp)
 {
-	while(len > 0)
+	while (len > 0)
 	{
 		tmp->res += write(1, temp, 1);
 		temp++;
@@ -36,14 +35,14 @@ int		write_int(char *temp, int len, t_struct *tmp)
 	return (tmp->res);
 }
 
-int		ft_print_minus(char *temp, int len, t_struct *tmp)
+int				ft_print_minus(char *temp, int len, t_struct *tmp)
 {
 	if (tmp->flag_minus)
-	{	
+	{
 		tmp->res += write(1, temp++, 1);
-		print_zero(	tmp, tmp->precision);
+		print_zero(tmp, tmp->precision);
 		write_int(temp, len - 1, tmp);
-		print_blank(tmp, tmp->width -(len + tmp->precision));
+		print_blank(tmp, tmp->width - (len + tmp->precision));
 	}
 	else if (tmp->flag_zero)
 	{
@@ -53,7 +52,7 @@ int		ft_print_minus(char *temp, int len, t_struct *tmp)
 	}
 	else
 	{
-		print_blank(tmp, tmp->width -(len + tmp->precision));
+		print_blank(tmp, tmp->width - (len + tmp->precision));
 		tmp->res += write(1, temp++, 1);
 		print_zero(tmp, tmp->precision);
 		write_int(temp, len - 1, tmp);
@@ -61,7 +60,7 @@ int		ft_print_minus(char *temp, int len, t_struct *tmp)
 	return (tmp->res);
 }
 
-int		print_zero(t_struct *tmp, int temp)
+int				print_zero(t_struct *tmp, int temp)
 {
 	int i;
 
@@ -71,10 +70,10 @@ int		print_zero(t_struct *tmp, int temp)
 		tmp->res += write(1, "0", 1);
 		i++;
 	}
-	return(tmp->res);
+	return (tmp->res);
 }
 
-int 	print_blank(t_struct *tmp, int temp)
+int				print_blank(t_struct *tmp, int temp)
 {
 	int i;
 

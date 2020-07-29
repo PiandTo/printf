@@ -6,7 +6,7 @@
 /*   By: snaomi <snaomi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 07:16:47 by snaomi            #+#    #+#             */
-/*   Updated: 2020/07/29 02:45:57 by snaomi           ###   ########.fr       */
+/*   Updated: 2020/07/29 16:12:07 by snaomi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_xtoa(unsigned long long n, char *base);
-char				*ft_utoa(unsigned int n);	
+char				*ft_utoa(unsigned int n);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
@@ -66,6 +66,5 @@ int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
-
 
 #endif
